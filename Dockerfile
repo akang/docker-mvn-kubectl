@@ -46,6 +46,9 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 # 7- Install python2
 RUN apk add --no-cache python2
 
+RUN apk add make
+RUN apk add g++
+
 # 8- Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl
