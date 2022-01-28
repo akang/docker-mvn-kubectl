@@ -20,7 +20,7 @@ ARG SHA=c35a1803a6e70a126e80b2b3ae33eed961f83ed74d18fcd16909b2d44d7dada3203f1ffe
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 
 # 5- Install java
-RUN apk add --upgrade openjdk8
+RUN apk add --upgrade openjdk11
 ENV JAVA_HOME /usr/lib/jvm/default-jvm
 RUN ln -s /usr/lib/jvm/default-jvm/bin/javac /usr/bin/javac
 
