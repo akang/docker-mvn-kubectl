@@ -1,8 +1,8 @@
 FROM docker:stable-dind
-LABEL Allan Kenneth Ang <allkenang@gmail.com>
+LABEL Allan Kenneth Ang <allan.kenneth.ang@prudential.com.my>
 
 # add CLI utils
-RUN apk add --no-cache curl tar bash procps nodejs npm
+RUN apk add --no-cache curl tar bash procps
 #RUN apk add --update docker openrc
 #RUN rc-update add docker boot
 
@@ -43,22 +43,16 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
-# 7- Install kubectl
+# 7- Install python2
+RUN apk add --no-cache python2
+
+RUN apk add make
+RUN apk add g++
+
+# 8- Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin
 
-# 8-install node and npm
-#ENV NODE_VERSION=12.6.0
-#RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-#ENV NVM_DIR=/root/.nvm
-#RUN . "$NVM_DIR/nvm.sh" && nvm install v${NODE_VERSION}
-#RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
-#RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
-#ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
-RUN node --version
-RUN npm --version
-
 
 CMD [""]
-
