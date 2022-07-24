@@ -43,8 +43,9 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
-# 7- Install python2
-RUN apk add --no-cache python2
+# 7- Install AWS CLI tools
+RUN apk add --no-cache curl jq python3 py3-pip
+RUN pip install awscli
 
 RUN apk add make
 RUN apk add g++
