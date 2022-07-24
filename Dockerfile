@@ -1,5 +1,4 @@
 FROM docker:stable-dind
-LABEL Allan Kenneth Ang <allan.kenneth.ang@prudential.com.my>
 
 # add CLI utils
 RUN apk add --no-cache curl tar bash procps
